@@ -1,17 +1,12 @@
 #include <stdio.h>
 #include <iostream>
-#include <opencv2/core.hpp>
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/highgui.hpp>
-#include <iostream>
+#include "pic_handler.h"
 
 int main()
 {
-    cv::Mat img = cv::imread("C:\\Users\\eylon\\Desktop\\projects\\barCode-and-qrCode-reader\\tests\\3232229999929.png");
-    cv::namedWindow("First OpenCV Application", cv::WINDOW_AUTOSIZE);
-    cv::imshow("First OpenCV Application", img);
-    cv::moveWindow("First OpenCV Application", 0, 45);
-    cv::waitKey(0);
-    cv::destroyAllWindows();
+    pic_handler handle("C:\\Users\\test0\\OneDrive\\שולחן העבודה\\project\\barCode-and-qrCode-reader\\tests\\0123456789005.png");
+    //pic_handler handle;
+    cv::Point test=handle.find_first_line();
+    std::cout << test.x << " " << test.y << std::endl;
     return 0;
 }
