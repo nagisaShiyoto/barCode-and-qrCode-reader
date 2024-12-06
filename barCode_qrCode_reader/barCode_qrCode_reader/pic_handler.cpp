@@ -1,8 +1,12 @@
 #include "pic_handler.h"
-
+#include <exception>
 pic_handler::pic_handler(std::string pic_path)
 {
 	this->current_img=cv::imread(pic_path);//create the img
+	if (this->current_img.empty())
+	{
+		throw std::exception("coudn't open img");
+	}
 	cv::cvtColor(this->current_img, this->analayzed_img, cv::COLOR_BGR2GRAY);
 }
 
